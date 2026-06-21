@@ -10,5 +10,6 @@ namespace Job_Tracker_Platform.Application.Interfaces_Repository
     public interface IUserRepository
     {
         Task AddUserAsync(User user);
+        Task<User?> Get_User_By_Id(Guid userid);
     }
 }

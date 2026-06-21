@@ -27,5 +27,21 @@ namespace Job_Tracker_Platform.Application.User_Service
                  userDTO.DateOfBirth);
             await _userRepository.AddUserAsync(creat); 
         }
+
+        public async Task<UserOutputDTO?> GetUserByIdAsync(Guid userid)
+        {
+            User find = await _userRepository.Get_User_By_Id(userid);
+            if(find == null)
+            {
+                throw new Exception("کاربر یافت نشد.");
+            }
+
+            return new UserOutputDTO
+            {
+                FirstName = find.FirstName,
+                LastName = find.LastName,
+                DateOfBirth = find.DateOfBirth
+            };
+        }
     }
 }
