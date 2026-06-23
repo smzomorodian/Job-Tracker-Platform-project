@@ -1,4 +1,5 @@
 using Job_Tracker_Platform.Application.Interfaces_Repository;
+using Job_Tracker_Platform.Application.Service.Company_Service;
 using Job_Tracker_Platform.Application.User_Service;
 using Job_Tracker_Platform.Infrustructure.Context;
 using Job_Tracker_Platform.Infrustructure.Repository;
@@ -14,6 +15,10 @@ builder.Services.AddDbContext<Appdbcontext>(options =>
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserSerivce>();
+builder.Services.AddScoped<ICompanyService, CompanyService>();
+builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
