@@ -10,5 +10,9 @@ namespace Job_Tracker_Platform.Application.Interfaces_Repository
     public interface ICompanyRepository
     {
         Task AddCompany(Company company);
+
+        Task<Company?> GetCompanyDataWhitId(Guid id);
+
+        Task<List<Company>> GetCompanyAllData();
     }
 }

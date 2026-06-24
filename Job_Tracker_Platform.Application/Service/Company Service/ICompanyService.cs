@@ -1,4 +1,5 @@
 ﻿using Job_Tracker_Platform.Application.DTO;
+using Job_Tracker_Platform.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,7 @@ namespace Job_Tracker_Platform.Application.Service.Company_Service
     public interface ICompanyService
     {
         Task CreatCompany(CompanyDTO companyDTO);
+        Task<CompanyOutPutDTO?> GetCompanyDataWhitIdAsync(Guid id);
+        Task<List<CompanyDTO>> GetCompanyAllDataAsync();
     }
 }

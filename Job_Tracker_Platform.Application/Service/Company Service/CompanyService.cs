@@ -31,5 +31,35 @@ namespace Job_Tracker_Platform.Application.Service.Company_Service
 
             await _companyRepository.AddCompany(creat);
         }
+
+        public async Task<List<CompanyDTO>> GetCompanyAllDataAsync()
+        {
+            var companies = await _companyRepository.GetCompanyAllData();
+            return companies.Select(c => new CompanyDTO
+            {
+                CompanyName = c.CompanyName,
+                Website = c.Website,
+                Location = c.Location,
+                Size = c.Size
+            }).ToList();
+        }
+
+        public async Task<CompanyOutPutDTO?> GetCompanyDataWhitIdAsync(Guid id)
+        {
+            Company find = await _companyRepository.GetCompanyDataWhitId(id);
+            if(find == null)
+            {
+                throw new Exception("Company not found");
+            }
+            var result = new CompanyOutPutDTO
+            {
+                CompanyName = find.CompanyName,
+                Website = find.Website,
+                Location = find.Location,
+                Size = (int)find.Size
+            };
+
+            return result;
+        }
     }
 }

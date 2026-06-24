@@ -23,10 +23,10 @@ namespace Job_Tracker_Platform_project.Controllers
             return Ok("User Created Successfully");
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetDataUser(Guid userid)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetDataUser(Guid id)
         {
-            var find = await _userService.GetUserByIdAsync(userid);
+            var find = await _userService.GetUserByIdAsync(id);
 
             if (find == null)
                 return NotFound("User not found");
