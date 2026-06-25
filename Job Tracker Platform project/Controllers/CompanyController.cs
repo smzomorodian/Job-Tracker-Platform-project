@@ -1,4 +1,4 @@
-﻿using Job_Tracker_Platform.Application.DTO;
+﻿using Job_Tracker_Platform.Application.DTO.Company;
 using Job_Tracker_Platform.Application.Service.Company_Service;
 using Job_Tracker_Platform.Application.User_Service;
 using Microsoft.AspNetCore.Http;
@@ -45,6 +45,18 @@ namespace Job_Tracker_Platform_project.Controllers
         {
             List<CompanyDTO> find = await _companyService.GetCompanyAllDataAsync();
             return Ok(find);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var find = await _companyService.GetCompanyDataWhitIdAsync(id);
+            if(find == null)
+            {
+                return NotFound("Company not Found");
+            }
+            await _companyService.Delete(id);
+            return NoContent();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Job_Tracker_Platform.Application.DTO;
+﻿using Job_Tracker_Platform.Application.DTO.User;
 using Job_Tracker_Platform.Application.User_Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,5 +33,35 @@ namespace Job_Tracker_Platform_project.Controllers
 
             return Ok(find);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllDataUser()
+        {
+            var result = await _userService.GetAllUserDataAsync();
+            return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUserWitId(Guid id) // TODO
+        {
+            await _userService.DeleteUserAsync(id);
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUserWitId(Guid id, UserDTO userDTO)
+        {
+            await _userService.UpdateAsync(id, userDTO);
+            return Ok();
+        }
+
+        [HttpPut("{id}/firstname")]
+        public async Task<IActionResult> UpdateUserNameWitId(Guid id, ChangeFirstNameDto userdto)
+        {
+            await _userService.UpdateFirstNameUser(id, userdto);
+            return Ok();
+        }
+
+        //[HttpPatch]
     }
 }

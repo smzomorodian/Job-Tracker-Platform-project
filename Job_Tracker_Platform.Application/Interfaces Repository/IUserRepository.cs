@@ -11,5 +11,8 @@ namespace Job_Tracker_Platform.Application.Interfaces_Repository
     {
         Task AddUserAsync(User user);
         Task<User?> Get_User_By_Id(Guid userid);
+        Task<List<User>> GetAllUserData();
+        Task DeleteUser(User user);
+        Task<User> UpdateUser(User user);
     }
 }

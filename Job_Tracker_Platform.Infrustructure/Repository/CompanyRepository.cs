@@ -25,6 +25,12 @@ namespace Job_Tracker_Platform.Infrustructure.Repository
             await _appdbcontext.SaveChangesAsync();
         }
 
+        public async Task Delete(Company company)
+        {
+            _appdbcontext.Companies.Remove(company);
+            await _appdbcontext.SaveChangesAsync();
+        }
+
         public async Task<List<Company>> GetCompanyAllData()
         {
             return await _appdbcontext.Companies.ToListAsync();

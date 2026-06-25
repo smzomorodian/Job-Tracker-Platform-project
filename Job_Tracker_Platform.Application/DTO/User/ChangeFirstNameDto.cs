@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Job_Tracker_Platform.Application.DTO
+namespace Job_Tracker_Platform.Application.DTO.User
 {
-    public class UserDTO
+    public class ChangeFirstNameDto
     {
         public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
     }
 }

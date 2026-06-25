@@ -1,4 +1,4 @@
-﻿using Job_Tracker_Platform.Application.DTO;
+﻿using Job_Tracker_Platform.Application.DTO.Company;
 using Job_Tracker_Platform.Application.Interfaces_Repository;
 using Job_Tracker_Platform.Domain.Models;
 using System;
@@ -30,6 +30,16 @@ namespace Job_Tracker_Platform.Application.Service.Company_Service
             );
 
             await _companyRepository.AddCompany(creat);
+        }
+
+        public async Task Delete(Guid id)
+        {
+            var find = await _companyRepository.GetCompanyDataWhitId(id);
+            if(find == null)
+            {
+                throw new Exception("Company not found");
+            }
+            await _companyRepository.Delete(find);
         }
 
         public async Task<List<CompanyDTO>> GetCompanyAllDataAsync()

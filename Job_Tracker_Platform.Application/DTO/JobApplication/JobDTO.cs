@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Job_Tracker_Platform.Application.DTO
+namespace Job_Tracker_Platform.Application.DTO.JobApplication
 {
     public class JobDTO
     {

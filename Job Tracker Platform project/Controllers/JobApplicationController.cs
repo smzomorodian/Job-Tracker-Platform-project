@@ -1,4 +1,4 @@
-﻿using Job_Tracker_Platform.Application.DTO;
+﻿using Job_Tracker_Platform.Application.DTO.JobApplication;
 using Job_Tracker_Platform.Application.Services.JobApplications;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

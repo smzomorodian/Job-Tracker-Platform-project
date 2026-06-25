@@ -1,4 +1,4 @@
-﻿using Job_Tracker_Platform.Application.DTO;
+﻿using Job_Tracker_Platform.Application.DTO.JobApplication;
 using System;
 using System.Collections.Generic;
 using System.Linq;

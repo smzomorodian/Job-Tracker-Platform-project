@@ -14,5 +14,6 @@ namespace Job_Tracker_Platform.Application.Interfaces_Repository
         Task<Company?> GetCompanyDataWhitId(Guid id);
 
         Task<List<Company>> GetCompanyAllData();
+        Task Delete(Company company);
     }
 }

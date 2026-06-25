@@ -25,9 +25,33 @@ namespace Job_Tracker_Platform.Infrustructure.Repository
             await _context.SaveChangesAsync();
         }
 
+        public async Task DeleteUser(User user)
+        {
+            //var find = await Get_User_By_Id(id);
+            //if(find == null)
+            //{
+            //    return;
+            //}
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+        }
+
+        public Task<List<User>> GetAllUserData()
+        {
+            var finds = _context.Users.ToListAsync();
+            return finds;
+        }
+
         public async Task<User?> Get_User_By_Id(Guid userid)
         {
            return await _context.Users.Where(x => x.Id == userid).FirstOrDefaultAsync();
+        }
+
+        public async Task<User> UpdateUser(User user)
+        {
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+            return user;
         }
     }
 }

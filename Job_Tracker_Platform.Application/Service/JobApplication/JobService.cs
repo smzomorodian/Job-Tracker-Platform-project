@@ -1,4 +1,4 @@
-﻿using Job_Tracker_Platform.Application.DTO;
+﻿using Job_Tracker_Platform.Application.DTO.JobApplication;
 using Job_Tracker_Platform.Application.Interfaces_Repository;
 using Job_Tracker_Platform.Domain.Models;
 using Job_Tracker_Platform.Domain.Models.Enume;

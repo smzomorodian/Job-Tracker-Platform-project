@@ -39,5 +39,17 @@ namespace Job_Tracker_Platform.Domain.Models
 
             return age;
         }
+
+        public void updateuser(string firstName, string lastName, DateTime dateOfBirth)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            DateOfBirth = dateOfBirth;
+        }
+
+        public void UpdateFirstName(string firstName)
+        {
+            FirstName = firstName;
+        }
     }
 }
