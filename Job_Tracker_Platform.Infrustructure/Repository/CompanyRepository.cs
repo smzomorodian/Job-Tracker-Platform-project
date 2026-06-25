@@ -41,5 +41,11 @@ namespace Job_Tracker_Platform.Infrustructure.Repository
             Company? find = await _appdbcontext.Companies.Where(x => x.Id == id).FirstOrDefaultAsync();
             return find;
         }
+
+        public async Task UpdateCompany(Company company)
+        {
+            _appdbcontext.Companies.Update(company);
+            await _appdbcontext.SaveChangesAsync();
+        }
     }
 }

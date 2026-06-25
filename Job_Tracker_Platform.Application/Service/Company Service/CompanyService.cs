@@ -32,7 +32,7 @@ namespace Job_Tracker_Platform.Application.Service.Company_Service
             await _companyRepository.AddCompany(creat);
         }
 
-        public async Task Delete(Guid id)
+        public async Task DeletecompanyAsync(Guid id)
         {
             var find = await _companyRepository.GetCompanyDataWhitId(id);
             if(find == null)
@@ -67,6 +67,27 @@ namespace Job_Tracker_Platform.Application.Service.Company_Service
                 Website = find.Website,
                 Location = find.Location,
                 Size = (int)find.Size
+            };
+
+            return result;
+        }
+
+        public async Task<CompanyOutPutDTO> updatecompanyAsync(Guid id,CompanyDTO companyDTO)
+        {
+            Company find = await _companyRepository.GetCompanyDataWhitId(id);
+            if(find == null)
+            {
+                throw new Exception("Company not found");
+            }
+            find.UpdateCompany(companyDTO.CompanyName,companyDTO.Website,companyDTO.Location,companyDTO.Size);
+            await _companyRepository.UpdateCompany(find);
+
+            CompanyOutPutDTO result = new CompanyOutPutDTO
+            {
+                CompanyName = find.CompanyName,
+                Website = find.Website,
+                Location = find.Location,
+                Size = find.Size
             };
 
             return result;

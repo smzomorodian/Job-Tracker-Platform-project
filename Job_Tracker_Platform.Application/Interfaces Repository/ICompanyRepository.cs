@@ -15,5 +15,6 @@ namespace Job_Tracker_Platform.Application.Interfaces_Repository
 
         Task<List<Company>> GetCompanyAllData();
         Task Delete(Company company);
+        Task UpdateCompany(Company company);
     }
 }

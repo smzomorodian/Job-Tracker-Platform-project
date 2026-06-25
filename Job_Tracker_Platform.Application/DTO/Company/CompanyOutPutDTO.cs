@@ -9,8 +9,8 @@ namespace Job_Tracker_Platform.Application.DTO.Company
     public class CompanyOutPutDTO
     {
         public string CompanyName { get; set; }
-        public string Website { get; set; }
-        public string Location { get; set; }
-        public int Size { get; set; }
+        public string? Website { get; set; }
+        public string? Location { get; set; }
+        public int? Size { get; set; }
     }
 }

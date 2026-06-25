@@ -27,5 +27,16 @@ namespace Job_Tracker_Platform.Domain.Models
             Location = location;
             Size = size;
         }
+
+        public void UpdateCompany(string companyName, string? website, string? location, int? size)
+        {
+            if (string.IsNullOrWhiteSpace(companyName))
+                throw new ArgumentException("Company Name is required");
+
+            CompanyName = companyName;
+            Website = website;
+            Location = location;
+            Size = size;
+        }
     }
 }

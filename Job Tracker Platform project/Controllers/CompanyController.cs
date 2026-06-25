@@ -55,8 +55,20 @@ namespace Job_Tracker_Platform_project.Controllers
             {
                 return NotFound("Company not Found");
             }
-            await _companyService.Delete(id);
+            await _companyService.DeletecompanyAsync(id);
             return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(Guid id, CompanyDTO companyDTO)
+        {
+            var find = await _companyService.GetCompanyDataWhitIdAsync(id);
+            if(find == null)
+            {
+                return NotFound("Company not Found");
+            }
+            CompanyOutPutDTO result = await _companyService.updatecompanyAsync(id, companyDTO);
+            return Ok(result);
         }
     }
 }

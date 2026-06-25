@@ -13,6 +13,7 @@ namespace Job_Tracker_Platform.Application.Service.Company_Service
         Task CreatCompany(CompanyDTO companyDTO);
         Task<CompanyOutPutDTO?> GetCompanyDataWhitIdAsync(Guid id);
         Task<List<CompanyDTO>> GetCompanyAllDataAsync();
-        Task Delete(Guid id);
+        Task DeletecompanyAsync(Guid id);
+        Task<CompanyOutPutDTO> updatecompanyAsync(Guid id, CompanyDTO companyDTO);
     }
 }
