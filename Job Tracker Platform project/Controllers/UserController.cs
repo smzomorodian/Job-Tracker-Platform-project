@@ -27,10 +27,6 @@ namespace Job_Tracker_Platform_project.Controllers
         public async Task<IActionResult> GetDataUser(Guid id)
         {
             var find = await _userService.GetUserByIdAsync(id);
-
-            if (find == null)
-                return NotFound("User not found");
-
             return Ok(find);
         }
 

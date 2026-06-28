@@ -1,5 +1,6 @@
 using Job_Tracker_Platform.Infrustructure;
 using Job_Tracker_Platform.Infrustructure.Context;
+using Job_Tracker_Platform_project.Middlewares;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +31,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 app.MapControllers();
 
