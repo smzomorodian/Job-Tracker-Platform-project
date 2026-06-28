@@ -42,6 +42,12 @@ namespace Job_Tracker_Platform.Domain.Models
 
         public void updateuser(string firstName, string lastName, DateTime dateOfBirth)
         {
+            if (string.IsNullOrWhiteSpace(firstName))
+                throw new ArgumentException("FirstName is required");
+
+            if (string.IsNullOrWhiteSpace(lastName))
+                throw new ArgumentException("LastName is required");
+
             FirstName = firstName;
             LastName = lastName;
             DateOfBirth = dateOfBirth;

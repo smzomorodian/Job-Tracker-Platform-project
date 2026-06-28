@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job_Tracker_Platform.Applic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job_Tracker_Platform.Infrustructure", "Job_Tracker_Platform.Infrustructure\Job_Tracker_Platform.Infrustructure.csproj", "{FA67C67E-FEE3-4D53-BF36-EC628D66CF9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job_Tracker_Platform.Domain.Tests", "Job_Tracker_Platform.Domain.Tests\Job_Tracker_Platform.Domain.Tests.csproj", "{8BD2CC79-8F4E-429B-8F82-E777295C5837}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{FA67C67E-FEE3-4D53-BF36-EC628D66CF9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA67C67E-FEE3-4D53-BF36-EC628D66CF9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA67C67E-FEE3-4D53-BF36-EC628D66CF9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BD2CC79-8F4E-429B-8F82-E777295C5837}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BD2CC79-8F4E-429B-8F82-E777295C5837}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BD2CC79-8F4E-429B-8F82-E777295C5837}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BD2CC79-8F4E-429B-8F82-E777295C5837}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
