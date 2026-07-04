@@ -42,7 +42,7 @@ namespace Job_Tracker_Platform.Infrustructure.Repository
             return finds;
         }
 
-        public async Task<User?> Get_User_By_Id(Guid userid)
+        public async Task<User?> GetUserById(Guid userid)
         {
            return await _context.Users.Where(x => x.Id == userid).FirstOrDefaultAsync();
         }

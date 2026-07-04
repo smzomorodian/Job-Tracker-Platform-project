@@ -1,6 +1,9 @@
+using FluentValidation;
+using Job_Tracker_Platform.Application.Validators;
 using Job_Tracker_Platform.Infrustructure;
 using Job_Tracker_Platform.Infrustructure.Context;
 using Job_Tracker_Platform_project.Middlewares;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +15,7 @@ builder.Services.AddDbContext<Appdbcontext>(options =>
 
 builder.Services.AddInfrustructureServices();
 
-
+builder.Services.AddValidatorsFromAssemblyContaining<ValidatorUser>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

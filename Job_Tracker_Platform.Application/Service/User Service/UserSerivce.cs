@@ -1,4 +1,5 @@
-﻿using Job_Tracker_Platform.Application.DTO.User;
+﻿using FluentValidation;
+using Job_Tracker_Platform.Application.DTO.User;
 using Job_Tracker_Platform.Application.Exceptions;
 using Job_Tracker_Platform.Application.Interfaces_Repository;
 using Job_Tracker_Platform.Domain.Models;
@@ -13,25 +14,31 @@ namespace Job_Tracker_Platform.Application.User_Service
     public class UserSerivce : IUserService
     {
         private IUserRepository _userRepository;
+        private readonly IValidator<UserDTO> _validator;
+        private readonly IValidator<ChangeFirstNameDto> _changefirstnamevalidator;
 
-        public UserSerivce(IUserRepository userRepository)
+        public UserSerivce(IUserRepository userRepository, IValidator<UserDTO> validator, IValidator<ChangeFirstNameDto> changefirstnamevalidator)
         {
             _userRepository = userRepository;
+            _validator = validator;
+            _changefirstnamevalidator = changefirstnamevalidator;
         }
 
         public async Task CreateUserAsync(UserDTO userDTO)
         {
-            var creat = new User
+            await _validator.ValidateAndThrowAsync(userDTO);
+
+            var user = new User
                 (Guid.NewGuid(),
                  userDTO.FirstName,
                  userDTO.LastName,
                  userDTO.DateOfBirth);
-            await _userRepository.AddUserAsync(creat);
+            await _userRepository.AddUserAsync(user);
         }
 
         public async Task DeleteUserAsync(Guid id)
         {
-            var find = await _userRepository.Get_User_By_Id(id);
+            var find = await _userRepository.GetUserById(id);
             if (find == null)
             {
                 throw new NotFoundException("کاربر یافت نشد.");
@@ -53,7 +60,7 @@ namespace Job_Tracker_Platform.Application.User_Service
 
         public async Task<UserOutputDTO?> GetUserByIdAsync(Guid userid)
         {
-            User find = await _userRepository.Get_User_By_Id(userid);
+            User? find = await _userRepository.GetUserById(userid);
             if (find == null)
             {
                 throw new NotFoundException("کاربر یافت نشد.");
@@ -69,7 +76,9 @@ namespace Job_Tracker_Platform.Application.User_Service
 
         public async Task<UserOutputDTO> UpdateAsync(Guid id, UserDTO userDTO)
         {
-            User user = await _userRepository.Get_User_By_Id(id);
+            await _validator.ValidateAndThrowAsync(userDTO);
+
+            User? user = await _userRepository.GetUserById(id);
             if (user == null)
             {
                 throw new NotFoundException("کاربر یافت نشد.");
@@ -89,7 +98,9 @@ namespace Job_Tracker_Platform.Application.User_Service
 
         public async Task<UserOutputDTO> UpdateFirstNameUser(Guid id, ChangeFirstNameDto usernewfirstname)
         {
-            User user = await _userRepository.Get_User_By_Id(id);
+            await _changefirstnamevalidator.ValidateAndThrowAsync(usernewfirstname);
+
+            User? user = await _userRepository.GetUserById(id);
             if (user == null)
             {
                 throw new NotFoundException("کاربر یافت نشد.");

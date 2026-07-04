@@ -1,4 +1,6 @@
-﻿using Job_Tracker_Platform.Application.DTO.Company;
+﻿using FluentValidation;
+using Job_Tracker_Platform.Application.DTO.Company;
+using Job_Tracker_Platform.Application.DTO.User;
 using Job_Tracker_Platform.Application.Interfaces_Repository;
 using Job_Tracker_Platform.Domain.Models;
 using System;
@@ -13,13 +15,16 @@ namespace Job_Tracker_Platform.Application.Service.Company_Service
     public class CompanyService : ICompanyService
     {
         private readonly ICompanyRepository _companyRepository;
-        public CompanyService(ICompanyRepository companyRepository)
+        private readonly IValidator<CompanyDTO> _validator;
+        public CompanyService(ICompanyRepository companyRepository, IValidator<CompanyDTO> validator)
         {
             _companyRepository = companyRepository;
+            _validator = validator;
         }
 
         public async Task CreatCompany(CompanyDTO companyDTO)
         {
+            await _validator.ValidateAndThrowAsync(companyDTO);
             Company creat = new Company
             (
                 Guid.NewGuid(),
@@ -74,6 +79,8 @@ namespace Job_Tracker_Platform.Application.Service.Company_Service
 
         public async Task<CompanyOutPutDTO> updatecompanyAsync(Guid id,CompanyDTO companyDTO)
         {
+            await _validator.ValidateAndThrowAsync(companyDTO);
+
             Company find = await _companyRepository.GetCompanyDataWhitId(id);
             if(find == null)
             {
