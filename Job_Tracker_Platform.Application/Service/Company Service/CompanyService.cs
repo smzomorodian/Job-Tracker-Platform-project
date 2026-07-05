@@ -61,7 +61,7 @@ namespace Job_Tracker_Platform.Application.Service.Company_Service
 
         public async Task<CompanyOutPutDTO?> GetCompanyDataWhitIdAsync(Guid id)
         {
-            Company find = await _companyRepository.GetCompanyDataWhitId(id);
+            Company? find = await _companyRepository.GetCompanyDataWhitId(id);
             if(find == null)
             {
                 throw new Exception("Company not found");
@@ -81,7 +81,7 @@ namespace Job_Tracker_Platform.Application.Service.Company_Service
         {
             await _validator.ValidateAndThrowAsync(companyDTO);
 
-            Company find = await _companyRepository.GetCompanyDataWhitId(id);
+            Company? find = await _companyRepository.GetCompanyDataWhitId(id);
             if(find == null)
             {
                 throw new Exception("Company not found");
