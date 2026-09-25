@@ -19,6 +19,7 @@ namespace Job_Tracker_Platform.Infrustructure.Context
             public DbSet<User> Users => Set<User>();
             public DbSet<Company> Companies => Set<Company>();
             public DbSet<JobApplication> JobApplications => Set<JobApplication>();
+            public DbSet<PhoneModel> phoneModels => Set<PhoneModel>();
         
     }
 }
